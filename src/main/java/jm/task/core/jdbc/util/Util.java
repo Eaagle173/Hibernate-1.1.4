@@ -14,6 +14,10 @@ import java.util.Properties;
 
 
 public class Util {
+    private static final String URL = "jdbc:postgresql://localhost:5432/db_test";
+    private static final String USER = "postgres";
+    private static final String PASSWORD = "rootroot";
+    private static Connection con = null;
     private static SessionFactory sessionFactory;
 
     public static SessionFactory getSessionFactory() {
@@ -23,9 +27,9 @@ public class Util {
 
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "org.postgresql.Driver");
-                settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/db_test");
-                settings.put(Environment.USER, "postgres");
-                settings.put(Environment.PASS, "rootroot");
+                settings.put(Environment.URL, URL);
+                settings.put(Environment.USER, USER);
+                settings.put(Environment.PASS, PASSWORD);
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
 
                 settings.put(Environment.SHOW_SQL, "true");
@@ -56,11 +60,6 @@ public class Util {
         }
     }
 
-
-    private static final String URL = "jdbc:postgresql://localhost:5432/db_test";
-    private static final String USER = "postgres";
-    private static final String PASSWORD = "rootroot";
-    private static Connection con = null;
 
     public static Connection getConnection() {
         try {
